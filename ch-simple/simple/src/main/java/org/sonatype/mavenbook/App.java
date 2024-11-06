@@ -7,6 +7,7 @@ import com.sun.net.httpserver.HttpServer;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.UUID;
 
 /**
  * Hello world!
@@ -18,10 +19,12 @@ public class App {
 
         HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
 
+        UUID uuid = UUID.randomUUID();
+
         server.createContext("/", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
-                String response = "Hello from the server!";
+                String response = "Hello from the server! UUID:" + uuid;
                 exchange.sendResponseHeaders(200, response.length());
                 OutputStream os = exchange.getResponseBody();
                 os.write(response.getBytes());
