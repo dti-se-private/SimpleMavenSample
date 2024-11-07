@@ -5,7 +5,8 @@ services:
       dockerfile: Dockerfile
     entrypoint: [ "/bin/sh", "-c" ]
     network_mode: host
-    env_file: .env
+    environment:
+      - APP_PORT=${APP_PORT}
     command:
       - |-
         java -jar ./ch-simple/simple/target/simple-0.8-SNAPSHOT.jar
