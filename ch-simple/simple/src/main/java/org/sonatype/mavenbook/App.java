@@ -17,8 +17,8 @@ public class App {
     public static void main(String[] args) throws IOException {
         System.out.println("Hello World!");
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(8000), 0);
-
+        String appPortEnv = System.getenv("APP_PORT");
+        HttpServer server = HttpServer.create(new InetSocketAddress(Integer.parseInt(appPortEnv)), 0);
         UUID uuid = UUID.randomUUID();
 
         server.createContext("/", new HttpHandler() {
@@ -33,7 +33,6 @@ public class App {
         });
 
         server.start();
-        String appPortEnv = System.getenv("APP_PORT");
         System.out.println("Server started on port " + appPortEnv);
     }
 }
