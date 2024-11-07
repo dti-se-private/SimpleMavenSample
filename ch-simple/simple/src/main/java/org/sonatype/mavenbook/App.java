@@ -33,6 +33,7 @@ public class App {
         });
 
         server.start();
-        System.out.println("Server started on port 8000");
+        String appPortEnv = System.getenv("APP_PORT");
+        System.out.println("Server started on port " + appPortEnv);
     }
 }
