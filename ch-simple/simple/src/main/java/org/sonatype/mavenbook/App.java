@@ -24,7 +24,7 @@ public class App {
         server.createContext("/", new HttpHandler() {
             @Override
             public void handle(HttpExchange exchange) throws IOException {
-                String response = "Hello from the server! UUID:" + uuid;
+                String response = "Hello from the server! (Check!!) UUID:" + uuid;
                 exchange.sendResponseHeaders(200, response.length());
                 OutputStream os = exchange.getResponseBody();
                 os.write(response.getBytes());
